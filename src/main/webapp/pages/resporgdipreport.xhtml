@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition template="/templates/template.xhtml" id="ui">
+        <ui:define name="title">RSSV</ui:define>
+        <ui:define name="body">
+                
+             <p:dialog widgetVar='popup' width="500" height='100'>
+                <h:form>
+                    <h:outputText value="Be patient. Your report is being generated." style="font-size: 16pt;font-weight:bold"  />
+                </h:form>
+            </p:dialog>
+            
+            <h:form>
+                <p:panel style="width:550px;">
+                    <f:facet name="header">
+                        <h:outputText value="Resporg Look Up"></h:outputText>
+                    </f:facet>
+                    <table>
+                        
+                        <tr>
+                            <td>
+                                <h:outputText value="CDPN"/>
+                            </td>
+                            <td>
+                                <p:inputText value="#{ResporgDipReport.tn}" style="width:200px"  disabled="false"/>
+                            </td>
+                            <td>
+                                <h:outputText value="CGPN"/>
+                            </td>
+                            <td>
+                                <p:inputText value="#{ResporgDipReport.cgpn}" style="width:200px"  disabled="false"/>
+                            </td>
+                        </tr>
+                          <tr>
+                            <td>
+                                <p:commandButton styleClass="but" value="DIP" action="#{ResporgDipReport.genReport()}" oncomplete="PF('popup').hide();"  ajax="false"  update="data" icon="fa fa-fw fa-play" />
+                            </td>
+                            <td>
+                                <p:commandButton styleClass="but" value="Clear" action="#{ResporgDipReport.clear()}" oncomplete="PF('popup').hide();"  ajax="false"  update="data" icon="fa fa-fw fa-eraser"/>
+                            </td>
+                        </tr>
+                    </table>
+                </p:panel>
+  
+                    <p:panel>
+                        <p:dataTable var="row" value="#{ResporgDipReport.rows}"  id="tbl"
+                                     
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                        paginator="true" rows="50" style="width:1500px">
+                            <f:facet name="{Exporters}">
+                                <div style="float:right;padding-top: 5px;">
+                                    <h:commandLink>
+                                        <p:graphicImage url="/resources/pdf.png" width="24"/>
+                                        <p:dataExporter type="pdf" target="tbl" fileName="IpReport2"/>
+                                    </h:commandLink>
+                                </div>
+                                 <div style="float:right;padding-top: 5px;">
+                                    <h:commandLink>
+                                        <p:graphicImage url="/resources/xls.png" width="24"/>
+                                        <p:dataExporter type="xls" target="tbl" fileName="IpReport2"/>
+                                    </h:commandLink>
+                                </div>
+                            </f:facet>
+                            <p:column headerText="TN">
+                                <f:facet name="header">
+                                    <h:outputText value="TN"/>
+                                </f:facet>
+                                <h:outputText value="#{row.TN}" />
+                            </p:column>
+
+                            <p:column headerText="Resporg">
+                                <f:facet name="header">
+                                    <h:outputText value="Resporg"/>
+                                </f:facet>
+                                <h:outputText value="#{row.resporg}" />
+                            </p:column>
+
+                            <p:column headerText="Company name">
+                                <f:facet name="header">
+                                    <h:outputText value="Company name"/>
+                                </f:facet>
+                                <h:outputText value="#{row.CName}" />
+                            </p:column>
+                            <p:column headerText="CIC">
+                                <f:facet name="header">
+                                    <h:outputText value="CIC"/>
+                                </f:facet>
+                                <h:outputText value="#{row.CIC}" />
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>  
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

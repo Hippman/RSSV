@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition template="/templates/template.xhtml" id="ui">
+        <ui:define name="title">Rest Service Statistics Viewer</ui:define>
+        <ui:define name="body">
+            
+             <p:dialog widgetVar='popup' width="300" height='100'>
+                <h:form>
+                    <h:outputText value="Be patient. Your report is being generated." style="font-size: 16pt;font-weight:bold"  />
+                </h:form>
+            </p:dialog>
+            
+            <h:form>
+                <p:panel style="width:450px;">
+                    <f:facet name="header">
+                        <h:outputText value="CIC pie report"></h:outputText>
+                    </f:facet>
+                    <table>
+                        
+                        <tr>
+                            <td>
+                                <h:outputText value="Date from"/>
+                            </td>
+                            <td>
+                                <p:calendar value="#{ResporgCICPieReport.datefrom}" id="calendarfrom" locale="en"
+                                    pattern="yyyy-MM-dd HH:mm"
+                                    showOn="button"  style="width:200px"
+                                    disabled="false"
+                                    showButtonPanel="true">
+                                </p:calendar>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h:outputText value="Date to"/>
+                            </td>
+                            <td>
+                                <p:calendar value="#{ResporgCICPieReport.dateto}" id="calendarto" locale="en"
+                                    pattern="yyyy-MM-dd HH:mm"
+                                    showOn="button"  style="width:200px"
+                                    disabled="false"
+                                    showButtonPanel="true">
+                                </p:calendar>
+                            </td>
+                        </tr>
+                        <tr>
+                           <td>
+                                <h:outputText value="Bound:" />
+                            </td>
+                            <td>
+                                <h:panelGrid columns="1" style="margin-bottom: 10px">
+                                    <p:inputText id="bound" value="#{ResporgCICPieReport.bound}" />
+                                    <p:slider for="bound" minValue="3" maxValue="20" step="1" />
+                                </h:panelGrid>
+                               
+                            </td>
+                        </tr>
+                        <tr>
+                           <td>
+                                <h:outputText value="Get full list of data to table:" />
+                            </td>
+                            <td>
+                                <h:panelGrid columns="1" style="margin-bottom: 10px">
+                                    <p:selectBooleanButton onLabel="Turn off" offLabel="Turn on" id="flag" value="#{ResporgCICPieReport.fullTable}" />
+                                </h:panelGrid>
+                               
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <p:commandButton styleClass="but" value="Get report" onclick="PF('popup').show();" action="#{ResporgCICPieReport.genReport()}" oncomplete="PF('popup').hide();" update="chart"  ajax="false" icon="fa fa-fw fa-play" />
+                            </td>
+                        </tr>
+                    </table>
+                </p:panel>  
+                <p:panelGrid columns="2">
+                    <p:chart id="pie1" type="pie" model="#{ResporgCICPieReport.pieModel1}" style="width:700px;height:600px" /> 
+                    <p:panel>
+                        <p:panel>
+                            <h:commandLink>
+                                <p:graphicImage url="/resources/pdf.png" width="24"/>
+                                <p:dataExporter type="pdf" target="tbl1" fileName="pie"/>
+                            </h:commandLink>
+
+                            <h:commandLink>
+                                <p:graphicImage url="/resources/xls.png" width="24"/>
+                                <p:dataExporter type="xls" target="tbl1" fileName="pie"/>
+                            </h:commandLink>
+                        </p:panel>
+                        <p:dataTable var="row" value="#{ResporgCICPieReport.rows1}"  id="tbl1"
+                                                 
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                        paginator="true" rows="10">
+                            <p:column headerText="Resporg">
+                                <f:facet name="header">
+                                    <h:outputText value="Resporg"/>
+                                </f:facet>
+                                <h:outputText value="#{row.resporg}" />
+                            </p:column>
+                            <p:column headerText="Company Name">
+                                <f:facet name="header">
+                                    <h:outputText value="Company Name"/>
+                                </f:facet>
+                                <h:outputText value="#{row.cname}" />
+                            </p:column>
+                            <p:column headerText="CIC">
+                                <f:facet name="header">
+                                    <h:outputText value="CIC"/>
+                                </f:facet>
+                                <h:outputText value="#{row.cic}" />
+                            </p:column>
+                            <p:column headerText="CIC Name">
+                                <f:facet name="header">
+                                    <h:outputText value="CIC Name"/>
+                                </f:facet>
+                                <h:outputText value="#{row.cname}" />
+                            </p:column>
+                            <p:column headerText="Minutes">
+                                <f:facet name="header">
+                                    <h:outputText value="Minutes"/>
+                                </f:facet>
+                                <h:outputText value="#{row.minutes}" />
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>
+                </p:panelGrid>
+               <p:panelGrid columns="2">
+                    <p:chart id="pie2" type="pie" model="#{ResporgCICPieReport.pieModel2}" style="width:700px;height:600px" /> 
+                    <p:panel>
+                        <p:panel>
+                            <h:commandLink>
+                                <p:graphicImage url="/resources/pdf.png" width="24"/>
+                                <p:dataExporter type="pdf" target="tbl2" fileName="pie"/>
+                            </h:commandLink>
+
+                            <h:commandLink>
+                                <p:graphicImage url="/resources/xls.png" width="24"/>
+                                <p:dataExporter type="xls" target="tbl2" fileName="pie"/>
+                            </h:commandLink>
+                        </p:panel>
+                        <p:dataTable var="row" value="#{ResporgCICPieReport.rows2}"  id="tbl2"
+                                                 
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                        paginator="true" rows="10">
+                            <p:column headerText="Resporg" style="width:100px">
+                                <f:facet name="header">
+                                    <h:outputText value="Resporg"/>
+                                </f:facet>
+                                <h:outputText value="#{row.resporg}" />
+                            </p:column>
+                            <p:column headerText="Company Name" style="width:100px">
+                                <f:facet name="header">
+                                    <h:outputText value="Company Name"/>
+                                </f:facet>
+                                <h:outputText value="#{row.cname}" />
+                            </p:column>
+                            <p:column headerText="CIC" style="width:100px">
+                                <f:facet name="header">
+                                    <h:outputText value="CIC"/>
+                                </f:facet>
+                                <h:outputText value="#{row.cic}" />
+                            </p:column>
+                            
+                            <p:column headerText="CIC Name" style="width:100px">
+                                <f:facet name="header">
+                                    <h:outputText value="CIC Name"/>
+                                </f:facet>
+                                <h:outputText value="#{row.cname}" />
+                            </p:column>
+                            
+                            <p:column headerText="Count" style="width:100px">
+                                <f:facet name="header">
+                                    <h:outputText value="Count"/>
+                                </f:facet>
+                                <h:outputText value="#{row.count}" />
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>
+                </p:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

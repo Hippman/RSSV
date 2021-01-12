@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition template="/templates/template.xhtml" id="ui">
+        <ui:define name="title">Rest Service Statistics Viewer</ui:define>
+        <ui:define name="body">
+            
+             <p:dialog widgetVar='popup' width="300" height='100'>
+                <h:form>
+                    <h:outputText value="Be patient. Your report is being generated." style="font-size: 16pt;font-weight:bold"  />
+                </h:form>
+            </p:dialog>
+            
+            <h:form>
+                <p:panel style="width:350px;">
+                    <f:facet name="header">
+                        <h:outputText value="REVENUE by ORIG REPORT"></h:outputText>
+                    </f:facet>
+                    <table>
+                        
+                        <tr>
+                            <td>
+                                <h:outputText value="Date from"/>
+                            </td>
+                            <td>
+                                <p:calendar value="#{RevenueOrigReport.datefrom}" id="calendarfrom" locale="en"
+                                    pattern="yyyy-MM-dd HH:mm"
+                                    showOn="button"  style="width:200px"
+                                    disabled="false"
+                                    showButtonPanel="true">
+                                </p:calendar>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h:outputText value="Date to"/>
+                            </td>
+                            <td>
+                                <p:calendar value="#{RevenueOrigReport.dateto}" id="calendarto" locale="en"
+                                    pattern="yyyy-MM-dd HH:mm"
+                                    showOn="button"  style="width:200px"
+                                    disabled="false"
+                                    showButtonPanel="true">
+                                </p:calendar>
+                            </td>
+                        </tr>
+                       
+                        <tr>
+                            <td colspan="2">
+                                <p:commandButton styleClass="but" value="Get report" onclick="PF('popup').show();" action="#{RevenueOrigReport.gen_report()}" oncomplete="PF('popup').hide();" update="chart"  ajax="false" icon="fa fa-fw fa-play" />
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </p:panel>  
+                <p:panel>
+                    <p:dataTable var="row" value="#{RevenueOrigReport.rows}"  id="tbl"
+
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                    paginator="true" rows="50" style="width:1500px">
+                        <f:facet name="{Exporters}">
+                             <div style="float:right;padding-top: 5px;">
+                                <h:commandLink>
+                                    <p:graphicImage url="/resources/xls.png" width="24"/>
+                                    <p:dataExporter type="xls" target="tbl" fileName="RevenueOrigReport" postProcessor="#{RevenueOrigReport.postProcessXLS}"/>
+                                </h:commandLink>
+                            </div>
+                        </f:facet>
+                        <p:columnGroup type="header">
+                            <p:row>
+                                <p:column colspan="9" headerText="R2 Originated" />
+                                <p:column colspan="7" headerText="BT ORIGINATED" />
+                            </p:row>
+                            <p:row>
+                                <p:column headerText="Outbound Trunk" />
+                                <p:column headerText="Routing Type" />
+                                <p:column headerText="Attempts" />
+                                <p:column headerText="Answered" />
+                                <p:column headerText="ASR" />
+                                <p:column headerText="ALOC" />
+                                <p:column headerText="Rate per min" />
+                                <p:column headerText="Revenue" />
+                                <p:column headerText="Minutes" />
+                                
+                                <p:column headerText="Attempts" />
+                                <p:column headerText="Answered" />
+                                <p:column headerText="ASR" />
+                                <p:column headerText="ALOC" />
+                                <p:column headerText="Rate per min" />
+                                <p:column headerText="Revenue" />
+                                <p:column headerText="Minutes" />
+                            </p:row>
+                        </p:columnGroup>
+                        <p:column headerText="Outbound Trunk" sortBy="#{row.outboundTrunk}">
+                                 <h:outputText value="#{row.outboundTrunk}" />
+                        </p:column>
+                        <p:column headerText="Routing Type" sortBy="#{row.routingType}">
+                            <h:outputText value="#{row.routingType}" />
+                        </p:column>
+                        <p:column  headerText="Attempts" sortBy="#{row.r2Attempts}">
+                            <h:outputText value="#{row.r2Attempts}" />
+                        </p:column>
+                        <p:column  headerText="Answered" sortBy="#{row.r2Answered}">
+                            <h:outputText value="#{row.r2Answered}" />
+                        </p:column>
+                        <p:column headerText="ASR" sortBy="#{row.r2ASR}">
+                            <h:outputText value="#{row.r2ASR}" />
+                        </p:column>
+                        <p:column headerText="ALOC" sortBy="#{row.r2Alloc}">
+                            <h:outputText value="#{row.r2Alloc}" />
+                        </p:column>
+                        <p:column headerText="Rate Per Min" sortBy="#{row.r2RatePerMin}">
+                            <h:outputText value="#{row.r2RatePerMin}" />
+                        </p:column>
+                        <p:column  headerText="Revenue" sortBy="#{row.r2Revenue}">
+                            <h:outputText value="#{row.r2Revenue}" />
+                        </p:column>
+                        <p:column  headerText="Minutes" sortBy="#{row.r2Minutes}">
+                            <h:outputText value="#{row.r2Minutes}" />
+                        </p:column>
+                        
+                        <p:column  headerText="Attempts" sortBy="#{row.btAttempts}">
+                            <h:outputText value="#{row.btAttempts}" />
+                        </p:column>
+                        <p:column  headerText="Answered" sortBy="#{row.btAnswered}">
+                            <h:outputText value="#{row.btAnswered}" />
+                        </p:column>
+                        <p:column headerText="ASR" sortBy="#{row.btASR}">
+                            <h:outputText value="#{row.btASR}" />
+                        </p:column>
+                        <p:column headerText="ALOC" sortBy="#{row.btAlloc}">
+                            <h:outputText value="#{row.btAlloc}" />
+                        </p:column>
+                        <p:column headerText="Rate Per Min" sortBy="#{row.btRatePerMin}">
+                            <h:outputText value="#{row.btRatePerMin}" />
+                        </p:column>
+                        <p:column  headerText="Revenue" sortBy="#{row.btRevenue}">
+                            <h:outputText value="#{row.btRevenue}" />
+                        </p:column>
+                        <p:column  headerText="Minutes" sortBy="#{row.btMinutes}">
+                            <h:outputText value="#{row.btMinutes}" />
+                        </p:column>
+                        <f:facet name="footer" >
+                             <table class=".footer">
+                                 <tr >
+                                     <td colspan="7">R2 Originated Total</td>
+                                     <td colspan="7">BT ORIGINATED Total</td>    
+                                 </tr>
+                                 <tr>
+                                     <td><h:outputText value="Attempts" /></td>
+                                     <td><h:outputText value="Answered" /></td>
+                                     <td><h:outputText value="ASR" /></td>
+                                     <td><h:outputText value="ALOC" /></td>
+                                     <td><h:outputText value="Rate per min" /></td>
+                                     <td><h:outputText value="Revenue" /></td>
+                                     <td><h:outputText value="Minutes" /></td>
+                                     <td><h:outputText value="Attempts" /></td>
+                                     <td><h:outputText value="Answered" /></td>
+                                     <td><h:outputText value="ASR" /></td>
+                                     <td><h:outputText value="ALOC" /></td>
+                                     <td><h:outputText value="Rate per min" /></td>
+                                     <td><h:outputText value="Revenue" /></td>
+                                     <td><h:outputText value="Minutes" /></td>
+                                 </tr>
+                                 <tr>
+                                     <td><h:outputText value="#{RevenueOrigReport.r2AttemptsTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.r2AnsweredTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.r2ASRTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.r2AllocTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.r2RatePerMinTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.r2RevenueTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.r2secondsTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.btAttemptsTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.btAnsweredTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.btASRTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.btAllocTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.btRatePerMinTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.btRevenueTotal}" /></td>
+                                     <td><h:outputText value="#{RevenueOrigReport.btsecondsTotal}" /></td>
+                                 </tr>
+                             </table>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

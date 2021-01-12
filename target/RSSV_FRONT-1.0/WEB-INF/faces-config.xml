@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+        <managed-bean>
+            <description>User</description>
+            <managed-bean-name>user</managed-bean-name>
+            <managed-bean-class>group.User</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>      
+        <managed-bean>
+            <description>Users</description>
+            <managed-bean-name>Users</managed-bean-name>
+            <managed-bean-class>reports.Users</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>      
+        <managed-bean>
+            <description>Reports</description>
+            <managed-bean-name>reports</managed-bean-name>
+            <managed-bean-class>reports.report_viewer</managed-bean-class>
+            <managed-bean-scope>view</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>Statistics</description>
+            <managed-bean-name>Statistics</managed-bean-name>
+            <managed-bean-class>reports.Statistics</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>  
+        <managed-bean>
+            <description>ChartDynamic</description>
+            <managed-bean-name>ChartDynamic</managed-bean-name>
+            <managed-bean-class>reports.ChartDynamic</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>  
+        <managed-bean>
+            <description>PieReport</description>
+            <managed-bean-name>PieReport</managed-bean-name>
+            <managed-bean-class>reports.PieReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean> 
+        <managed-bean>
+            <description>IpReport</description>
+            <managed-bean-name>IpReport</managed-bean-name>
+            <managed-bean-class>reports.IpStatsReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>  
+        <managed-bean>
+            <description>IpReport2</description>
+            <managed-bean-name>IpReport2</managed-bean-name>
+            <managed-bean-class>reports.IpStats2Report</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>  
+        <managed-bean>
+            <description>DDRReport</description>
+            <managed-bean-name>DDRReport</managed-bean-name>
+            <managed-bean-class>reports.DDRReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>DipReport</description>
+            <managed-bean-name>DipReport</managed-bean-name>
+            <managed-bean-class>reports.DipReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>ResporgDipReport</description>
+            <managed-bean-name>ResporgDipReport</managed-bean-name>
+            <managed-bean-class>reports.ResporgDipReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>ResporgPieReport</description>
+            <managed-bean-name>ResporgPieReport</managed-bean-name>
+            <managed-bean-class>reports.ResporgPieReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>CICPieReport</description>
+            <managed-bean-name>CICPieReport</managed-bean-name>
+            <managed-bean-class>reports.CICPieReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>ResporgCICPieReport</description>
+            <managed-bean-name>ResporgCICPieReport</managed-bean-name>
+            <managed-bean-class>reports.ResporgCICPieReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>R2AsrAlocReport</description>
+            <managed-bean-name>R2AsrAlocReport</managed-bean-name>
+            <managed-bean-class>reports.R2AsrAlocReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>RevenueReport</description>
+            <managed-bean-name>RevenueReport</managed-bean-name>
+            <managed-bean-class>reports.RevenueReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>RevenueOrigReport</description>
+            <managed-bean-name>RevenueOrigReport</managed-bean-name>
+            <managed-bean-class>reports.RevenueOrigReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>cdrViewerReport</description>
+            <managed-bean-name>cdrViewerReport</managed-bean-name>
+            <managed-bean-class>reports.cdrViewerReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>SipDipReport</description>
+            <managed-bean-name>SipDipReport</managed-bean-name>
+            <managed-bean-class>reports.SipDipReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>ResporgCopyReport</description>
+            <managed-bean-name>ResporgCopyReport</managed-bean-name>
+            <managed-bean-class>reports.ResporgCopyReport</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <description>dashboard</description>
+            <managed-bean-name>dashboard</managed-bean-name>
+            <managed-bean-class>reports.dashboard</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+</faces-config>
