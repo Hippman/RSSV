@@ -1,0 +1,94 @@
+extends header.pug
+
+block content
+
+	.page3
+		aside.aside
+			.aside__list
+				.aside__item
+					.item__head
+						span Look Up
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path class="del" d="M9.41406 2.96875H10.5859C10.6901 2.96875 10.7422 3.02083 10.7422 3.125V16.875C10.7422 16.9792 10.6901 17.0312 10.5859 17.0312H9.41406C9.3099 17.0312 9.25781 16.9792 9.25781 16.875V3.125C9.25781 3.02083 9.3099 2.96875 9.41406 2.96875Z" fill="#0F2346" fill-opacity="0.6"/>
+							<path d="M3.4375 9.25781H16.5625C16.6667 9.25781 16.7188 9.3099 16.7188 9.41406V10.5859C16.7188 10.6901 16.6667 10.7422 16.5625 10.7422H3.4375C3.33333 10.7422 3.28125 10.6901 3.28125 10.5859V9.41406C3.28125 9.3099 3.33333 9.25781 3.4375 9.25781Z" fill="#0F2346" fill-opacity="0.6"/>
+						</svg>
+					.item__body
+						.body__point
+							img(src="image/sss.png")
+							span API LRN
+				.aside__item.aside__item_active
+					.item__head
+						span TRAFFIC STATISTICS
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path class="del" d="M9.41406 2.96875H10.5859C10.6901 2.96875 10.7422 3.02083 10.7422 3.125V16.875C10.7422 16.9792 10.6901 17.0312 10.5859 17.0312H9.41406C9.3099 17.0312 9.25781 16.9792 9.25781 16.875V3.125C9.25781 3.02083 9.3099 2.96875 9.41406 2.96875Z" fill="#0F2346" fill-opacity="0.6"/>
+							<path d="M3.4375 9.25781H16.5625C16.6667 9.25781 16.7188 9.3099 16.7188 9.41406V10.5859C16.7188 10.6901 16.6667 10.7422 16.5625 10.7422H3.4375C3.33333 10.7422 3.28125 10.6901 3.28125 10.5859V9.41406C3.28125 9.3099 3.33333 9.25781 3.4375 9.25781Z" fill="#0F2346" fill-opacity="0.6"/>
+						</svg>
+					.item__body
+						.body__point
+							img(src="image/sss.png")
+							span API LRN
+						.body__point
+							img(src="image/sss.png")
+							span API LRN
+						.body__point
+							img(src="image/sss.png")
+							span API LRN
+						.body__point
+							img(src="image/sss.png")
+							span API LRN
+						.body__point
+							img(src="image/sss.png")
+							span API LRN
+		.page3__right
+			.page3__block1
+				.block__head Rest service calls statistic
+				.block__body
+					.body__input
+						label Date from
+						input(type="data" placeholder="2020-12-10 02:29")
+						img(src="image/data.png")
+					.body__input
+						label Date to
+						input(type="data" placeholder="2020-12-10 02:29")
+						img(src="image/data.png")
+					.body__input
+						label User:
+						.select
+							.select__head
+								span R2
+								img(src="image/select.png")
+					.body__input
+						label Group by:
+						.select
+							.select__head
+								span Hour
+								img(src="image/select.png")
+					button Get report
+						img(src="image/arr.png")
+			.page3__block2
+				table
+					thead
+						tr
+							td 
+								span Date
+									img(src="image/Group71.png")
+							td 
+								span User
+									img(src="image/Group71.png")
+							td Total
+							td LRN
+							td Category
+							td Full
+							td OCN
+							td OCN Name	
+							td SPID
+							td LRNJurisdiction
+							td Jurisdiction
+							td FullCospec
+							td NNMP
+					tbody
+						tr
+							td(colspan="13") No records found.
+				button Download report
+					img(src="image/qwe.png")
+	script(src="js/app.min.js")
