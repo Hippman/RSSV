@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition template="/templates/template.xhtml" id="ui">
+        <ui:define name="title">Rest Service Statistics Viewer</ui:define>
+        <ui:define name="body">
+            
+             <p:dialog widgetVar='popup' width="300" height='100'>
+                <h:form>
+                    <h:outputText value="Be patient. Your report is being generated." style="font-size: 16pt;font-weight:bold"  />
+                </h:form>
+            </p:dialog>
+            
+            <h:form>
+                <p:panel style="width:350px;">
+                    <f:facet name="header">
+                        <h:outputText value="R2 ASR/ALOC REPORT"></h:outputText>
+                    </f:facet>
+                    <table>
+                        
+                        <tr>
+                            <td>
+                                <h:outputText value="Date from"/>
+                            </td>
+                            <td>
+                                <p:calendar value="#{R2AsrAlocReport.datefrom}" id="calendarfrom" locale="en"
+                                    pattern="yyyy-MM-dd HH:mm"
+                                    showOn="button"  style="width:200px"
+                                    disabled="false"
+                                    showButtonPanel="true">
+                                </p:calendar>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h:outputText value="Date to"/>
+                            </td>
+                            <td>
+                                <p:calendar value="#{R2AsrAlocReport.dateto}" id="calendarto" locale="en"
+                                    pattern="yyyy-MM-dd HH:mm"
+                                    showOn="button"  style="width:200px"
+                                    disabled="false"
+                                    showButtonPanel="true">
+                                </p:calendar>
+                            </td>
+                        </tr>
+                        <!--
+                        <tr>
+                           <td>
+                                <h:outputText value="Group by:" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{R2AsrAlocReport.groupby}"  autoWidth="true" style="width:190px">
+                                  <p:ajax event="keyup" /> 
+                                    <f:selectItem itemValue="No group" itemLabel="No group" />
+                                    <f:selectItem itemValue="Hour" itemLabel="Hour" />
+                                    <f:selectItem itemValue="Day" itemLabel="Day" />
+                                    <f:selectItem itemValue="Week" itemLabel="Week" />
+                                    <f:selectItem itemValue="Month" itemLabel="Month" />
+                                    <f:selectItem itemValue="Year" itemLabel="Year" />
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>-->
+                        <tr>
+                            <td colspan="2">
+                                <p:commandButton styleClass="but" value="Get report" onclick="PF('popup').show();" action="#{R2AsrAlocReport.gen_report()}" oncomplete="PF('popup').hide();" update="chart"  ajax="false" icon="fa fa-fw fa-play" />
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </p:panel>  
+                <p:panel>
+                    <p:dataTable var="row" value="#{R2AsrAlocReport.rows}"  id="tbl"
+
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                    paginator="true" rows="50" style="width:800px">
+                        <f:facet name="{Exporters}">
+                             <div style="float:right;padding-top: 5px;">
+                                <h:commandLink>
+                                    <p:graphicImage url="/resources/xls.png" width="24"/>
+                                    <p:dataExporter type="xls" target="tbl" fileName="r2AsrAlocReport" postProcessor="#{R2AsrAlocReport.postProcessXLS}"/>
+                                </h:commandLink>
+                            </div>
+                        </f:facet>
+                        <p:column headerText="Date" sortBy="#{row.repdate}">
+                            <f:facet name="header">
+                                <h:outputText value="Date"/>
+                            </f:facet>
+                            <h:outputText value="#{row.repdate}" />
+                        </p:column>
+                        <p:column headerText="Attempts" sortBy="#{row.attempts}">
+                            <f:facet name="header">
+                                <h:outputText value="Attempts"/>
+                            </f:facet>
+                            <h:outputText value="#{row.attempts}" />
+                        </p:column>
+                        <p:column headerText="Answered" sortBy="#{row.answered}">
+                            <f:facet name="header">
+                                <h:outputText value="Answered"/>
+                            </f:facet>
+                            <h:outputText value="#{row.answered}" />
+                        </p:column>
+                        <p:column headerText="ASR" sortBy="#{row.ASR}">
+                            <f:facet name="header">
+                                <h:outputText value="ASR"/>
+                            </f:facet>
+                            <h:outputText value="#{row.ASR}" />
+                        </p:column>
+                        <p:column headerText="ALOC" sortBy="#{row.ALOC}">
+                            <f:facet name="header">
+                                <h:outputText value="ALOC"/>
+                            </f:facet>
+                            <h:outputText value="#{row.ALOC}" />
+                        </p:column>
+                        <f:facet name="footer" >
+                             <table class=".footer">
+                                 <tr >
+                                     <td colspan="4">Total</td>
+                                 </tr>
+                                 <tr>
+                                     <td><h:outputText value="Attempts" /></td>
+                                     <td><h:outputText value="Answered" /></td>
+                                     <td><h:outputText value="ASR" /></td>
+                                     <td><h:outputText value="ALOC" /></td>
+                                 </tr>
+                                 <tr>
+                                     <td><h:outputText value="#{R2AsrAlocReport.attemptsTotal}" /></td>
+                                     <td><h:outputText value="#{R2AsrAlocReport.answeredTotal}" /></td>
+                                     <td><h:outputText value="#{R2AsrAlocReport.asrTotal}" /></td>
+                                     <td><h:outputText value="#{R2AsrAlocReport.alocTotal}" /></td>
+                                 </tr>
+                             </table>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.org/ui">
+  <h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet"/>
+    <title>Document</title>
+  </h:head>
+  <h:body>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+    <h:outputStylesheet name="css/style.css"/>
+    <h:outputStylesheet name="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap"/>
+    <h:outputStylesheet name="myClasses.css" />
+    <h:outputStylesheet >  
+        *.gradient
+        {
+           margin-top:12px;
+            width:100%;
+            background:#3557e2;
+            -webkit-box-shadow:0 15px 20px rgba(6,6,85,.15);
+            box-shadow:0 15px 20px rgba(6,6,85,.15);
+            border-radius:6px;
+            height:44px;
+            color:#fff;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+            display:-webkit-box;
+            display:-ms-flexbox;
+            display:flex;
+            -webkit-box-pack:center;
+            -ms-flex-pack:center;
+            justify-content:center;
+            -webkit-box-align:center;
+            -ms-flex-align:center;
+            align-items:center;
+            border:none
+        }
+    </h:outputStylesheet> 
+    <div class="page2">
+      <div class="wrapper">
+        <div class="page2__inner">
+          <div class="inner__sides">
+            <div class="inner__lft">
+              <h2>Log in</h2>
+              <p>Log in with your data that you entered during your registration.</p>
+              <h:form id="logform" prependId="false" style="alignment-adjust: central" onclick="getTimezone()" onsubmit="PF('dlg2').show();"  >  
+                <label for="login">Login</label>
+                <h:inputText value="#{user.login}"/>
+                <label for="password">Password</label>
+                <h:inputSecret value="#{user.password}" />
+                <p:commandButton  styleClass="gradient" id="logbut" value="Log in"  action="#{user.tryToLogin()}"  ajax="false"/>
+                
+              </h:form>
+            </div>
+            <div class="inner__rht">
+              <div class="rht__logo">
+                  <h:graphicImage class="sip__border" value="/resources/image/Rectangle228.png"/>
+                  <span class="span-top">the</span><b>sip trunk</b>
+                <div class="sip__sides"><span>19</span>
+                  <div class="bl">-x</div><span>99</span>
+                </div>
+                <p>global company</p>
+              </div>
+                  <h:graphicImage class="comp" value="/resources/image/Group63.png"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </h:body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+                <p:panel style="width:640px;" id="panel">
+                    <table>
+                        <tr>
+                            <td>
+                                <h:outputText value="TN"/>
+                            </td>
+                            <td>
+                                <p:inputText value="#{DipReport.tn}" style="width:200px"  disabled="false"/>
+                            </td>
+                            <td>
+                                <p:commandButton styleClass="but" value="DIP" action="#{DipReport.genReport()}" oncomplete="PF('popup').hide();"  ajax="false"  update="data" icon="fa fa-fw fa-play" />
+                            </td>
+                            <td>
+                                <p:commandButton styleClass="but" value="Clear" action="#{DipReport.clear()}" oncomplete="PF('popup').hide();"  ajax="false"  update="data" icon="fa fa-fw fa-eraser"/>
+                            </td>
+                        </tr>
+                    </table>
+             
+                    <p:dataTable var="row" value="#{DipReport.rows}"  id="tbl"
+
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                    paginator="true" rows="50" style="width:1450px">
+                        <f:facet name="{Exporters}">
+                            <div style="float:right;padding-top: 5px;">
+                                <h:commandLink>
+                                    <p:graphicImage url="/resources/pdf.png" width="24"/>
+                                    <p:dataExporter type="pdf" target="tbl" fileName="IpReport2"/>
+                                </h:commandLink>
+                            </div>
+                             <div style="float:right;padding-top: 5px;">
+                                <h:commandLink>
+                                    <p:graphicImage url="/resources/xls.png" width="24"/>
+                                    <p:dataExporter type="xls" target="tbl" fileName="IpReport2"/>
+                                </h:commandLink>
+                            </div>
+                        </f:facet>
+                        <p:column headerText="TN">
+                            <f:facet name="header">
+                                <h:outputText value="TN"/>
+                            </f:facet>
+                            <h:outputText value="#{row.tn}" />
+                        </p:column>
+
+                        <p:column headerText="LRN">
+                            <f:facet name="header">
+                                <h:outputText value="LRN"/>
+                            </f:facet>
+                            <h:outputText value="#{row.lrn}" />
+                        </p:column>
+
+                        <p:column headerText="OCN">
+                            <f:facet name="header">
+                                <h:outputText value="OCN"/>
+                            </f:facet>
+                            <h:outputText value="#{row.ocn}" />
+                        </p:column>
+
+                        <p:column headerText="OCN Name">
+                            <f:facet name="header">
+                                <h:outputText value="OCN Name"/>
+                            </f:facet>
+                            <h:outputText value="#{row.ocnName}" />
+                        </p:column>
+
+                        <p:column headerText="Category">
+                            <f:facet name="header">
+                                <h:outputText value="Category"/>
+                            </f:facet>
+                            <h:outputText value="#{row.category}" />
+                        </p:column>
+
+                        <p:column headerText="SPID">
+                            <f:facet name="header">
+                                <h:outputText value="SPID"/>
+                            </f:facet>
+                            <h:outputText value="#{row.spid}" />
+                        </p:column>
+
+                        <p:column headerText="SPID Name">
+                            <f:facet name="header">
+                                <h:outputText value="SPID Name"/>
+                            </f:facet>
+                            <h:outputText value="#{row.spidName}" />
+                        </p:column>
+
+                        <p:column headerText="CoSpec Name">
+                            <f:facet name="header">
+                                <h:outputText value="CoSpec Name"/>
+                            </f:facet>
+                            <h:outputText value="#{row.coSpecName}" />
+                        </p:column>
+
+                        <p:column headerText="CoSpec or OCN Name">
+                            <f:facet name="header">
+                                <h:outputText value="CoSpec or OCN Name"/>
+                            </f:facet>
+                            <h:outputText value="#{row.coSpecOrOcnName}" />
+                        </p:column>
+
+                        <p:column headerText="SV Type" style="width: 200px">
+                            <f:facet name="header">
+                                <h:outputText value="SV Type"/>
+                            </f:facet>
+                            <h:outputText value="#{row.svtype}" />
+                        </p:column>
+
+                    </p:dataTable>
+                </p:panel>  
+</html>
