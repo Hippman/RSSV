@@ -231,9 +231,9 @@ public class ChartDynamic {
             cell.setCellValue("Run rate");
             cell.setCellStyle(cellStyle);
 
-            sheet.setColumnWidth(5, 3500);
-            sheet.setColumnWidth(6, 3500);
-            sheet.setColumnWidth(7, 3500);
+            sheet.setColumnWidth(5, 3600);
+            sheet.setColumnWidth(6, 3600);
+            sheet.setColumnWidth(7, 3600);
             cell=sheet.getRow(1).getCell(5);
             cell.setCellValue(String.format("%.0f", total));
             cell=sheet.getRow(1).getCell(6);

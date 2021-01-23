@@ -110,7 +110,7 @@ header{
 						&.num-active{
 							width: 32px;
 							height: 32px;
-							background: #3557E2;
+							background: #3607E2;
 							border-radius: 4px;
 							display: flex;
 							justify-content: center;
@@ -460,7 +460,7 @@ header{
 		}
 	}
 	&__shadow{
-		width: 350px;
+		width: 360px;
 		background: radial-gradient(14.23% 32.5% at 50% 50%, #010119 0%, rgba(1, 1, 25, 0.58) 100%);
 		filter: blur(30px);
 		height: 12px;
@@ -632,7 +632,7 @@ header{
 						margin-top: 24px;
 						line-height: 20px;
 						a{
-							color: #3557E2;
+							color: #3607E2;
 							font-weight: bold;
 							margin-left: 4px;
 						}
@@ -656,7 +656,7 @@ header{
 					input[type=submit]{
 						margin-top: 12px;
 						width: 100%;
-						background: #3557E2;
+						background: #3607E2;
 						box-shadow: 0px 15px 20px rgba(6, 6, 85, 0.15);
 						border-radius: 6px;
 						height: 44px;
@@ -773,7 +773,7 @@ header{
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				background: #3557E2;
+				background: #3607E2;
 				border-radius: 6px;
 				max-width: 188px;
 				font-size: 16px;
@@ -853,7 +853,7 @@ header{
 				align-items: center;
 				justify-content: center;
 				height: 46px;
-				background: #3557E2;
+				background: #3607E2;
 				border-radius: 6px;
 				font-size: 16px;
 				color: #fff;
@@ -958,7 +958,7 @@ header{
 			}
 			svg{
 				path{
-					fill: #3557E2;
+					fill: #3607E2;
 				}
 			}
 			.item__head{
@@ -967,14 +967,14 @@ header{
 					content: '';
 					width: 4px;
 					height: 40px;
-					background: #3557E2;
+					background: #3607E2;
 					border-radius: 3px;
 					right: 0;
 					position: absolute;
 				}
 				span{
 					font-size: 16px;
-					color: #3557E2;
+					color: #3607E2;
 				}
 			}
 			.item__body{

@@ -15,7 +15,7 @@
             
             <h:form id="formloc"> 
                 
-                <p:panel style="width:350px;" >
+                <p:panel style="width:360px;" >
                     <f:facet name="header">
                         <h:outputText value="DDR report"></h:outputText>
                     </f:facet>
@@ -28,7 +28,7 @@
                             <td>
                                 <p:calendar value="#{DDRReport.datefrom}" id="calendarfrom" locale="en"
                                     pattern="yyyy-MM-dd HH:mm"
-                                    showOn="button"  style="width:200px"
+                                    showOn="button" 
                                     disabled="false"
                                     showButtonPanel="true">
                                 </p:calendar>
@@ -41,7 +41,7 @@
                             <td>
                                 <p:calendar value="#{DDRReport.dateto}" id="calendarto" locale="en"
                                     pattern="yyyy-MM-dd HH:mm"
-                                    showOn="button"  style="width:200px"
+                                    showOn="button" 
                                     disabled="false"
                                     showButtonPanel="true">
                                 </p:calendar>
@@ -52,7 +52,7 @@
                                 <h:outputText value="User:" />
                             </td>
                             <td>
-                                <p:selectOneMenu id="selmenu" value="#{DDRReport.user}" autoWidth="true" style="width:190px" >
+                                <p:selectOneMenu id="selmenu" value="#{DDRReport.user}" autoWidth="true" style="width:220px" >
                                     <p:ajax event="keyup" /> 
                                     <f:selectItems value="#{DDRReport.users}" />
                                 </p:selectOneMenu>

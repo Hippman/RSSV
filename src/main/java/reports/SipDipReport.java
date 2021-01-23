@@ -89,7 +89,7 @@ public class SipDipReport {
             cell.setCellStyle(cellStyle);
          
 
-            sheet.setColumnWidth(5, 3500);
+            sheet.setColumnWidth(5, 3600);
           
             cell=sheet.getRow(1).getCell(5);
             cell.setCellValue(String.format("%d", total));
