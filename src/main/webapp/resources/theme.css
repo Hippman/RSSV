@@ -50,7 +50,7 @@
  box-sizing:border-box
 }
 .ui-panelmenu .ui-panelmenu-panel {
-    box-shadow:0 0 20px rgba(33,53,90,.05);
+    box-shadow:0 30px 20px rgba(33,53,90,.05);
     width:251px;
     border-radius: 1.25rem;
 }
@@ -163,7 +163,8 @@ body .ui-inputfield {
     -ms-flex-pack:justify;
     justify-content:space-between;
     padding-right:20px;
-    position:relative
+    position:relative;
+    
 }
 body .ui-inputfield.ui-state-hover:not(.ui-state-error) {
  border-color:#212121
@@ -4201,12 +4202,18 @@ body .ui-picklist .ui-picklist-buttons .ui-icon-arrowstop-1-w:before {
  content:""
 }
 body .ui-picklist .ui-picklist-caption {
- background-color:#663259;
+ background-color:#fff;
  border:1px solid #c8c8c8;
- color:#ffffff;
+ color:#000;
  padding:.571em 1em .571em 1em;
  border-bottom:0 none;
- font-weight:700
+ font-weight:600;
+ text-align: left;
+ font-size: 12px;
+ padding-left: 20px;
+ border-radius: 8px 8px 0 0;
+ box-shadow: 0 5px 20px rgba(33,53,90,.3);
+ border: 0px;
 }
 body .ui-picklist .ui-picklist-filter-container .ui-picklist-filter {
  padding:.429em;
@@ -4240,10 +4247,13 @@ body .ui-picklist .ui-picklist-filter-container .ui-icon:before {
  content:""
 }
 body .ui-picklist .ui-picklist-list {
- border:1px solid #c8c8c8;
- background-color:#fff;
+  background-color:#fff;
  color:#333;
- padding:0
+ padding:0;
+ border-left:0px;
+ border-bottom:0px;
+ border-right:0px;
+ box-shadow: 0 10px 15px rgba(33,53,90,.1);
 }
 body .ui-picklist .ui-picklist-list .ui-picklist-item {
  padding:.429em .857em;
@@ -6828,7 +6838,7 @@ body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active a .ui-icon {
  color:#fff
 }
 body .ui-panelmenu {
-    padding-top: 20px;
+    padding-top: 10px;
     padding-right: 20px;
     border: 0px;
 }
@@ -6913,6 +6923,8 @@ body .ui-panelmenu .ui-panelmenu-header.ui-state-active {
     border:0px solid #fff;
     background-color:#fff;
     color:rgba(15,35,70,.6);
+    visibility: hidden;
+    height: 0px;
 }
 body .ui-panelmenu .ui-panelmenu-header.ui-state-active .ui-icon {
     color:rgba(15,35,70,.6);
@@ -6936,7 +6948,7 @@ body .ui-panelmenu .ui-panelmenu-content {
     -webkit-box-shadow: 0 10px 20px rgba(33,53,90,.05);
     
     box-shadow:0 10 20px rgba(33,53,90,.05);
-    border-radius:0 0 8px 0px;
+    border-radius:0 8px 8px 0px;
     padding-top:30px;
     margin-bottom:30px;
     border-right: 0;
@@ -7318,4 +7330,8 @@ body .ui-separator {
     -ms-flex-align:center;
     align-items:center;
     border:none
+}
+*.custom_input{
+    font-size: 14px;
+    padding-left: 10px;
 }
