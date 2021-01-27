@@ -53,7 +53,7 @@ public class User
         oldPassword="";
         rules=new ArrayList<>();
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/RSSV_FRONT/faces/index.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/RSSV/faces/index.xhtml");
         } catch (IOException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }

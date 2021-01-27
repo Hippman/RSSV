@@ -15,110 +15,101 @@
             
             <h:form>
                 
-                <p:panel style="width: 1500px" id="bigpanel">
+                <p:panel style="width: 1450px" id="bigpanel">
                     <f:facet name="header">
                         <h:outputText value="CDR Viewer"></h:outputText>
                     </f:facet>
                     <p:pickList value="#{cdrViewerReport.fieldmodel}" var="fld" itemLabel="#{fld}" itemValue="#{fld}" 
-                                effect="bounce"  showSourceControls="true" showTargetControls="true" style="width: 1500">
+                                effect="bounce"  showSourceControls="true" showTargetControls="true">
                         <f:facet name="sourceCaption">Available Fields</f:facet>
                         <f:facet name="targetCaption">Selected Fields</f:facet>
                          <p:ajax event="transfer" listener="#{cdrViewerReport.onTransfer}"  />
                     </p:pickList>
-                    <table>
-                        <tr>
-                            <td>
-                               <h:outputText value="From:"/>  
-                            </td>
-                            <td> 
+                    <div style="padding-top: 10px">
+                        <h:outputText value="From:" style="padding: 10px"/>  
+                      
                                 <p:calendar value="#{cdrViewerReport.cdrdateFrom}" id="calendarfrom" locale="en"
                                     pattern="yyyy-MM-dd HH:mm"
                                     showOn="button"  style="width:150px"
                                     disabled="false"
                                     showButtonPanel="true">
                                 </p:calendar>
-                            </td>
-                            <td>
-                                <h:outputText value="To:"/>
-                            </td>    
-                            <td>    
+                           
+                                <h:outputText value="To:" style="padding: 10px"/>
+                               
                                 <p:calendar value="#{cdrViewerReport.cdrdateTo}" id="calendarto" locale="en"
                                     pattern="yyyy-MM-dd HH:mm"
                                     showOn="button"  style="width:150px"
                                     disabled="false"
                                     showButtonPanel="true">
                                 </p:calendar>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            </td>
-                            <td>
-                                <p:selectOneMenu value="#{cdrViewerReport.conditionField}" style="width:150px">
-                                    <f:selectItem itemLabel="Call Type" itemValue="Call Type" />
-                                    <f:selectItem itemLabel="Duration" itemValue="Duration" />
-                                    <f:selectItem itemLabel="MS Duration" itemValue="MS Duration" />
-                                    <f:selectItem itemLabel="Setup Time" itemValue="Setup Time" />
-                                    <f:selectItem itemLabel="Code" itemValue="Code"/>    
-                                    <f:selectItem itemLabel="Cust IP" itemValue="Cust IP" />
-                                    <f:selectItem itemLabel="Egress Vendor ID" itemValue="Egress Vendor ID" />
-                                    <f:selectItem itemLabel="Orig Calling" itemValue="Orig Calling" />
-                                    <f:selectItem itemLabel="Calling" itemValue="Calling" />
-                                    <f:selectItem itemLabel="Dialed" itemValue="Dialed" />
-                                    <f:selectItem itemLabel="Resporg" itemValue="Resporg"/>      
-                                    <f:selectItem itemLabel="Egress Vendor Rate" itemValue="Egress Vendor Rate" />
-                                    <f:selectItem itemLabel="Vendor IP" itemValue="Vendor IP" />
-                                    <f:selectItem itemLabel="Hostname" itemValue="Hostname" />
-                                    <f:selectItem itemLabel="Method" itemValue="Method" />
-                                    <f:selectItem itemLabel="From Tag" itemValue="From Tag" />
-                                    <f:selectItem itemLabel="To Tag" itemValue="To Tag"/>    
-                                    <f:selectItem itemLabel="Call ID" itemValue="Call ID" />
-                                    <f:selectItem itemLabel="Reason" itemValue="Reason" />
-                                    <f:selectItem itemLabel="Egress From URI" itemValue="Egress From URI" />
-                                    <f:selectItem itemLabel="Req URI" itemValue="Req URI" />
-                                    <f:selectItem itemLabel="Dest URI" itemValue="Dest URI" />
-                                    <f:selectItem itemLabel="Send PCharge" itemValue="Send PCharge"/>      
-                                    <f:selectItem itemLabel="PCharge Header" itemValue="PCharge Header" />
-                                    <f:selectItem itemLabel="Vendor Porte" itemValue="Vendor Port"/>      
-                                </p:selectOneMenu>
-                            </td>
-                            <td>
-                                <p:selectOneMenu value="#{cdrViewerReport.conditionOperation}" >
-                                    <f:selectItem itemLabel="=" itemValue="=" />
-                                    <f:selectItem itemLabel="!=" itemValue="!=" />
-                                    <f:selectItem itemLabel="&gt;" itemValue="&gt;" />
-                                    <f:selectItem itemLabel="&gt;=" itemValue="&gt;=" />
-                                    <f:selectItem itemLabel="&lt;" itemValue="&lt;" />
-                                    <f:selectItem itemLabel="&lt;=" itemValue="&lt;="/>        
-                                    <f:selectItem itemLabel="like" itemValue="like"/>        
-                                </p:selectOneMenu>
-                            </td>
-                            <td>
-                                <p:inputText value="#{cdrViewerReport.conditionValue}" style="width:150px"/>
-                            </td>
-                            <td>
-                                <p:commandButton  styleClass="but" value="Add" action="#{cdrViewerReport.addCondition()}" ajax="false" icon="fa fa-fw fa-play" update="condlist"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
+                                <br/>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p:selectOneMenu value="#{cdrViewerReport.conditionField}" style="width:260px">
+                                                <f:selectItem itemLabel="Call Type" itemValue="Call Type" />
+                                                <f:selectItem itemLabel="Duration" itemValue="Duration" />
+                                                <f:selectItem itemLabel="MS Duration" itemValue="MS Duration" />
+                                                <f:selectItem itemLabel="Setup Time" itemValue="Setup Time" />
+                                                <f:selectItem itemLabel="Code" itemValue="Code"/>    
+                                                <f:selectItem itemLabel="Cust IP" itemValue="Cust IP" />
+                                                <f:selectItem itemLabel="Egress Vendor ID" itemValue="Egress Vendor ID" />
+                                                <f:selectItem itemLabel="Orig Calling" itemValue="Orig Calling" />
+                                                <f:selectItem itemLabel="Calling" itemValue="Calling" />
+                                                <f:selectItem itemLabel="Dialed" itemValue="Dialed" />
+                                                <f:selectItem itemLabel="Resporg" itemValue="Resporg"/>      
+                                                <f:selectItem itemLabel="Egress Vendor Rate" itemValue="Egress Vendor Rate" />
+                                                <f:selectItem itemLabel="Vendor IP" itemValue="Vendor IP" />
+                                                <f:selectItem itemLabel="Hostname" itemValue="Hostname" />
+                                                <f:selectItem itemLabel="Method" itemValue="Method" />
+                                                <f:selectItem itemLabel="From Tag" itemValue="From Tag" />
+                                                <f:selectItem itemLabel="To Tag" itemValue="To Tag"/>    
+                                                <f:selectItem itemLabel="Call ID" itemValue="Call ID" />
+                                                <f:selectItem itemLabel="Reason" itemValue="Reason" />
+                                                <f:selectItem itemLabel="Egress From URI" itemValue="Egress From URI" />
+                                                <f:selectItem itemLabel="Req URI" itemValue="Req URI" />
+                                                <f:selectItem itemLabel="Dest URI" itemValue="Dest URI" />
+                                                <f:selectItem itemLabel="Send PCharge" itemValue="Send PCharge"/>      
+                                                <f:selectItem itemLabel="PCharge Header" itemValue="PCharge Header" />
+                                                <f:selectItem itemLabel="Vendor Porte" itemValue="Vendor Port"/>      
+                                            </p:selectOneMenu>
+                                        </td>
+                                        <td>
+                                            <p:selectOneMenu value="#{cdrViewerReport.conditionOperation}" >
+                                                <f:selectItem itemLabel="=" itemValue="=" />
+                                                <f:selectItem itemLabel="!=" itemValue="!=" />
+                                                <f:selectItem itemLabel="&gt;" itemValue="&gt;" />
+                                                <f:selectItem itemLabel="&gt;=" itemValue="&gt;=" />
+                                                <f:selectItem itemLabel="&lt;" itemValue="&lt;" />
+                                                <f:selectItem itemLabel="&lt;=" itemValue="&lt;="/>        
+                                                <f:selectItem itemLabel="like" itemValue="like"/>        
+                                            </p:selectOneMenu>
+                                        </td>
+                                        <td>
+                                            <p:inputText value="#{cdrViewerReport.conditionValue}" style="width:220px"/>
+                                        </td>
+                                        <td>
+                                            <p:commandButton  styleClass="but" value="Add" action="#{cdrViewerReport.addCondition()}" ajax="false" icon="fa fa-fw fa-play" update="condlist"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                        <br/>
+                            <div>
                                 <p:selectOneListbox id="condlist2"  value="#{cdrViewerReport.selectedCondition}">
                                     <f:selectItems value="#{cdrViewerReport.conditions}"   var="row" itemLabel="#{row.dispText}" itemValue="#{row.dispText}" />
                                     <p:column>
                                         <h:outputText value="#{row.dispText}" />
                                     </p:column>
                                 </p:selectOneListbox>
-                              
-                             </td>
-                            <td>
+                            </div>  
+                            
                                 <p:commandButton  styleClass="but" value="Edit" action="#{cdrViewerReport.parseSelectedCondition()}" ajax="false"  update="bigpanel"/>
-                            </td>
-                            <td>
+                         
                                 <p:commandButton  styleClass="but" value="Delete" action="#{cdrViewerReport.rmCondition()}" ajax="false"  update="bigpanel"/>
-                            </td>
-                        </tr>
-                    </table>
-                    
+               
+                    </div>
                 </p:panel>
                     
 

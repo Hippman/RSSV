@@ -14,6 +14,7 @@
     <h:outputStylesheet name="css/style.css"/>
     <h:outputStylesheet name="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap"/>
     <h:outputStylesheet name="myClasses.css" />
+    <h:outputStylesheet name="theme.css" />    
     <h:outputStylesheet >  
         *.gradient
         {
@@ -49,10 +50,10 @@
               <p>Log in with your data that you entered during your registration.</p>
               <h:form id="logform" prependId="false" style="alignment-adjust: central" onclick="getTimezone()" onsubmit="PF('dlg2').show();"  >  
                 <label for="login">Login</label>
-                <h:inputText value="#{user.login}"/>
+                <h:inputText value="#{user.login}" class="custom_input"/>
                 <label for="password">Password</label>
-                <h:inputSecret value="#{user.password}" />
-                <p:commandButton  styleClass="gradient" id="logbut" value="Log in"  action="#{user.tryToLogin()}"  ajax="false"/>
+                <h:inputSecret value="#{user.password}" class="custom_input" />
+                <p:commandButton  styleClass="gradient" id="logbut" value="Log in"  action="#{user.tryToLogin()}"  ajax="false" />
                 
               </h:form>
             </div>
@@ -61,7 +62,7 @@
                   <h:graphicImage class="sip__border" value="/resources/image/Rectangle228.png"/>
                   <span class="span-top">the</span><b>sip trunk</b>
                 <div class="sip__sides"><span>19</span>
-                  <div class="bl">-x</div><span>99</span>
+                  <div class="bl">&#60;-x&#62;</div><span>99</span>
                 </div>
                 <p>global company</p>
               </div>

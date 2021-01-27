@@ -51,7 +51,7 @@
                                 <h:outputText value="User:" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{Statistics.user}" autoWidth="true" style="width:190px">
+                                <p:selectOneMenu value="#{Statistics.user}" autoWidth="true" style="width:220px">
                                     <p:ajax event="keyup" /> 
                                     <f:selectItems value="#{Statistics.users}" />
                                 </p:selectOneMenu>
@@ -62,7 +62,7 @@
                                 <h:outputText value="Group by:" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{Statistics.groupby}"  autoWidth="true" style="width:190px">
+                                <p:selectOneMenu value="#{Statistics.groupby}"  autoWidth="true" style="width:220px">
                                   <p:ajax event="keyup" /> 
                                     <f:selectItem itemValue="5 min" itemLabel="5 min" />
                                     <f:selectItem itemValue="Hour" itemLabel="Hour" />
@@ -88,7 +88,7 @@
                     <table>
                         <tr>
                             <td valign="top">
-                                <p:dataTable  value="#{Statistics.rows}" var="row" sortMode="single" style="width:1500px">
+                                <p:dataTable  value="#{Statistics.rows}" var="row" sortMode="single" style="width:1480px">
                                     <p:column sortBy="#{row.date}"  width="10vw">
                                         <f:facet name="header">
                                             <h:outputText value="Date"/>
