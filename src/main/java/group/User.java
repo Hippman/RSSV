@@ -41,9 +41,11 @@ public class User
     private String oldDescription;
     private String errorMessage;
     private ArrayList<String> rules;
+    private Boolean hideDashboard;
     
     public void logout()
     {
+        hideDashboard=false;
         logined=false;
         Login="";
         Password="";
@@ -106,6 +108,7 @@ public class User
         oldDescription="";
         oldPassword="";
         rules=new ArrayList<>();
+        hideDashboard=false;
     }
 
     public User(String Login, String Password, String description) 
@@ -118,6 +121,7 @@ public class User
         oldDescription="";
         oldPassword="";
         rules=new ArrayList<>();
+        hideDashboard=false;
     }
 
   
@@ -214,10 +218,15 @@ public class User
         }
         return false;*/
     }
-
+    public void HideDashboard(){
+        hideDashboard=true;
+    }
+    
     public String tryToLogin()
     {
-        
+        if (hideDashboard==true){
+            return  "/pages/template.xhtml";
+        }
         if(Login.length()>0 && Password.length()>0)
         {
             logined=true;

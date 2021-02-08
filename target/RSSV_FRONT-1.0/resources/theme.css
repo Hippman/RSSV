@@ -1350,7 +1350,7 @@ body .ui-datepicker .ui-datepicker-calendar td a:hover {
  background-color:#eaeaea
 }
 body .ui-datepicker .ui-datepicker-calendar td a.ui-state-active {
- background-color:#663259;
+ background-color:#3607e2;
  color:#fff
 }
 body .ui-datepicker .ui-datepicker-calendar td.ui-datepicker-today a {
@@ -2653,7 +2653,7 @@ body .ui-panel.ui-panel-collapsed-h .ui-panel-titlebar .ui-panel-titlebar-icon {
 }
 body .ui-accordion .ui-accordion-header {
  border:1px solid #c8c8c8;
- background-color:#663259;
+ 
  color:#333;
  padding:.571em 1em .571em 1em;
  font-weight:700;
@@ -2665,7 +2665,16 @@ body .ui-accordion .ui-accordion-header {
  transition:background-color .3s
 }
 body .ui-accordion .ui-accordion-header:first-child {
- margin-top:0
+ margin-top:0;
+ height: 87px;
+ border-radius: 16px 16px 16px 16px; 
+ background: linear-gradient(180deg, rgba(132, 166, 254, 1) 0%, rgba(115, 120, 235, 1) 100%);
+ font-weight: 600;
+ text-transform: uppercase;
+ color: #fff;
+ font-family: Montserrat,sans-serif;
+ font-size: 16px;
+ padding-top: 32px;
 }
 body .ui-accordion .ui-accordion-header .ui-icon {
  color:#848484
@@ -2681,10 +2690,11 @@ body .ui-accordion .ui-accordion-header.ui-state-hover .ui-icon,
 body .ui-accordion .ui-accordion-header.ui-tabs-outline .ui-icon {
  color:#333
 }
+
 body .ui-accordion .ui-accordion-header.ui-state-active {
  border:1px solid #663259;
- background-color:#663259;
- color:#fff
+ color:#fff;
+  height: 87px;
 }
 body .ui-accordion .ui-accordion-header.ui-state-active .ui-icon {
  color:#fff
@@ -2693,7 +2703,7 @@ body .ui-accordion .ui-accordion-header.ui-state-active:hover,
 body .ui-accordion .ui-accordion-header.ui-state-active.ui-tabs-outline {
  outline:0 none;
  border:1px solid #116fbf;
- background-color:#116fbf;
+ 
  color:#fff
 }
 body .ui-accordion .ui-accordion-header.ui-state-active:hover .ui-icon,
@@ -6599,13 +6609,13 @@ body .ui-menu .ui-menu-list .ui-menuitem {
 }
 body .ui-menu .ui-menu-list .ui-menuitem.ui-state-hover {
  background-color:#eaeaea;
- color:#333
+
 }
 body .ui-menu .ui-menu-list .ui-menuitem.ui-state-hover>.ui-menuitem-link {
- color:#333
+
 }
 body .ui-menu .ui-menu-list .ui-menuitem.ui-state-hover>.ui-menuitem-link .ui-icon {
- color:#333
+
 }
 body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
  padding:.571em .857em;
@@ -6617,25 +6627,28 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
  border-radius:0
 }
 body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link.ui-state-hover {
- background-color:#eaeaea
+ background-color:transparent;
 }
 body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link.ui-state-hover .ui-icon {
- color:#333
+
 }
 body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link.ui-state-hover .ui-menuitem-text {
- color:#333
+
 }
 body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-icon {
  margin-right:.429em;
  margin-top:0;
  vertical-align:middle;
  float:none;
- color:#333
+ 
+}
+body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-text .ui-state-hover{
+    color: #fff;
 }
 body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-text {
  vertical-align:middle;
  float:none;
- color:#333
+ color: #fff;
 }
 body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-icon-triangle-1-e:last-child {
  font-family:'primeicons';
@@ -7346,4 +7359,14 @@ body .ui-separator {
 body .ui-selectonelistbox .ui-selectlistbox-listcontainer .ui-selectlistbox-list .ui-selectlistbox-item.ui-state-highlight, body .ui-selectmanymenu .ui-selectlistbox-listcontainer .ui-selectlistbox-list .ui-selectlistbox-item.ui-state-highlight {
     background-color: #f9f9f9;
     color: #000;
+}
+
+body .ui-accordion .ui-accordion-header.ui-state-active {
+   
+    border-radius: 16px 16px 0px 0px;
+    border: 0px;
+}
+body .ui-accordion .ui-accordion-content {
+    border-radius: 0 0 16px 16px;
+    border: 0px;
 }

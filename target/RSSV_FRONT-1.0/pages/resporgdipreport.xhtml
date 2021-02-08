@@ -22,7 +22,7 @@
                         
                         <tr>
                             <td>
-                                <h:outputText value="CDPN"/>
+                                <h:outputText value="CFN"/>
                             </td>
                             <td>
                                 <p:inputText value="#{ResporgDipReport.tn}" style="width:200px"  disabled="false"/>
@@ -70,7 +70,12 @@
                                 </f:facet>
                                 <h:outputText value="#{row.TN}" />
                             </p:column>
-
+                            <p:column headerText="CGPN">
+                                <f:facet name="header">
+                                    <h:outputText value="CGPN"/>
+                                </f:facet>
+                                <h:outputText value="#{row.CGPN}" />
+                            </p:column>
                             <p:column headerText="Resporg">
                                 <f:facet name="header">
                                     <h:outputText value="Resporg"/>
